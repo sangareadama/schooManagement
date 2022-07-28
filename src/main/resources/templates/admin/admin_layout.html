@@ -1,0 +1,39 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+      
+<!-- Fragment #1 : Headerfiles contains css and js references -->
+<head >
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+    <title layout:title-pattern="$CONTENT_TITLE - $DECORATOR_TITLE">SCHOOl MAGNAGEMENT</title>
+    
+    <style th:replace="/admin/share/style"></style>
+</head>
+<body >
+<div class="main-wrapper"> 
+
+	<div th:replace="/admin/share/header"> </div>
+	
+	<div th:replace="/admin/share/left_side"></div>
+	   
+	<!-- Content Wrapper. Contains page content -->
+    <div class="page-wrapper"> 
+      <div class="content container-fluid">
+    	<div layout:fragment="content">
+    	
+    	 
+    	</div>
+       </div>
+    </div>   
+    
+    <div th:replace="/admin/share/footer"> </div>
+    
+     <div th:replace="/admin/share/script"> </div>
+    
+     <div th:fragment="script"></div>
+</div>
+
+</body>
+</html>

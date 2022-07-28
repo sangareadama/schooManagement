@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="/adminEnseignant/enseignant_layout">
+<head >
+<meta charset="ISO-8859-1">
+<title>Liste Notes</title>
+ 
+</head>
+<body>
+
+	<div layout:fragment="content">
+		<div class="col-sm-10">
+			<div class="page-header">
+				<div class="row align-items-center">
+					<div class="col">
+						<h3 class="page-title">Notes</h3>
+
+					</div>
+					<div class="col-auto text-end float-end ms-auto">
+
+						 <a href="/enseignant/classe/note/addNote" class="btn btn-primary"><i
+							class="fas fa-plus"></i></a> <a href="#"
+							class="btn btn-outline-primary me-2"><i
+							class="fas fa-download"></i> Download</a>
+
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-12">
+					<div class="card card-table">
+						<div class="card-body">
+							<div class="table-responsive">
+								<table class="table table-hover table-center ">
+									<thead>
+										<tr>
+											<th>PHOTO</th>
+											<th>Nom</th>
+											<th>Prenom</th>
+											<th>note</th>
+											<th>Action</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr th:each="n:${noteEleve}">
+										     <td> <img alt=""th:src="*{'data:photo/jpeg;base64,'+{n.eleve.photo}}"
+						                    style="width: 40px; height: 40px;"  class="rounded-circle">
+											</td> 
+											<td th:text="${n.eleve.nom}"></td> 
+											<td th:text="${n.eleve.prenom} "></td>
+											<td th:text="${n.valeurNote} "></td>
+											<td > 
+		 					         			 
+		 					         			<a  href="#" class="btn btn-primary btn-xs purple editView" title="Edit" th:href="@{/enseignant/classe/note/edit(id=${n.id})}"><i class="fa fa-edit"></i>Edit</a>
+		 					         			
+		 									</td>
+										</tr>
+									</tbody>
+								</table>
+							</div> 
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

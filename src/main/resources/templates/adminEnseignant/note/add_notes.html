@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="/adminEnseignant/enseignant_layout">
+      
+<head>
+<meta charset="UTF-8">
+<title>Ajouter Notes</title>
+<head>
+<body>
+<div layout:fragment="content"> 
+   <div class="content container-fluid">
+
+			<div class="page-header">
+				<div class="row align-items-center">
+					<div class="col">
+						<h3 class="page-title">Enseignant</h3>
+						<ul class="breadcrumb">
+							<li class="breadcrumb-item active">Add Notes</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-sm-12"> 
+				           
+							<form th:action="@{/enseignant/classe/note/save}" method="post">
+							<div class="card">
+						      <div class="card-body">
+								<div class="row">
+									<div class="col-12"> 
+										<h5 class="form-title">
+											<span> Infos Note</span>
+										</h5>
+									</div>
+									<div class="col-xl-2 col-lg-4 col-6 form-group">
+                                    	 <label> Type de Note </label> 
+										 <select class="form-control" name="typeNoteId">
+											<option th:each="tn:${typeNote}" th:value="${tn.id}" th:text="${tn.libelle+' / '+tn.noteTotal}" />
+										 </select>
+                                   </div>
+                                   <div class="col-xl-2 col-lg-4 col-6 form-group">
+                                    	<label> Matiere </label> 
+										<select class="form-control" name="CoursId">
+											<option th:each="mt:${matiere}" th:value="${mt.id}" th:text="${mt.libelle}" />
+										</select>
+                                   </div>
+                                   <div class="col-xl-2 col-lg-4 col-6 form-group">
+                                    	<label class="control-label" for="nom">Date Note </label>
+                                    	 <input type="date"  name ="dateNote"  class="form-control" id="" placeholder="date " required autofocus="autofocus"/>
+                                   </div>
+                                    <div class="col-xl-2 col-lg-4 col-6 form-group">
+                                    	<div class="form-group">
+											<label>Heure Debut</label> 
+											<input type="time"  name ="heureDebut"  class="form-control" id="" placeholder="debut" required autofocus="autofocus"/>
+										</div>
+                                    </div>
+                                    <div class="col-xl-2 col-lg-4 col-6 form-group">
+                                    	<div class="form-group">
+											<label>Heure Fin</label> 
+											<input type="time"  name ="heureFin"  class="form-control" id="" placeholder="fin" required autofocus="autofocus"/>
+										</div>
+                                    </div>
+								</div>
+							</div>
+					     </div>
+					   <div class="card">
+						 <div class="card-body">
+							 <table class="table table-hover table-center ">
+								<thead style="width: 5em;">
+								  <tr>
+									<th>PHOTO</th>
+									<th>Nom</th>
+									<th>Prenom</th>
+									<th>Matricule</th>
+									<th>Date de naiss</th>
+									<th>Classes</th>
+									<th>Action</th>
+								  </tr>
+								</thead>
+								
+								<tbody>
+								   
+									<tr style="margin-bottom:10px;" th:each="eleve:${eleves}">
+									<!-- <td> <img alt=""th:src="*{'data:photo/jpeg;base64,'+{eleve.photo}}"
+						                    style="width: 40px; height: 40px;"  class="rounded-circle">
+									</td> -->
+									
+									<td th:text="${eleve.nom}"></td>
+									<td th:text="${eleve.prenom}"></td> 
+									<td th:text="${eleve.matricule}"></td>
+									<td th:text="${eleve.dateDeNaissance}"></td>
+									<td th:text="${eleve.classes}"></td>
+									<td th:text="${eleve.email}"></td>
+									<td >
+										<div class="form-group" style="width:5em">
+											<input type="number" step="0.01" min="0" max="100" name ="noteListe" class="form-control" id="noteTotal" placeholder="note" />
+										</div>
+									</td>
+									  
+									<!-- <td > 
+		 					         	<a  href="#" class="btn btn-info btn-xs purple editView" title="Edit" th:href="@{/admin/eleve/edit(id=${eleve.id})}"><i class="fa fa-edit"></i></a>
+		 								<a onclick="return confirm('vous etes sur de supprimer ? ')" href="#" class="btn btn-danger btn-xs purple deleteView" title="Delete " th:href="@{/admin/eleve/delete(id=${eleve.id})}"><i class="fa fa-trash"></i></a>	
+									</td> -->										 
+								</tr> 
+							   	
+								</tbody>
+								
+							</table>
+						</div>
+						
+							<div class="col-12">
+										<button type="submit" class="btn btn-primary">Enregistrer</button>
+							</div>
+							</div> 
+						</form>
+						
+				</div>
+			</div>
+			
+			</div>
+		
+		</div>
+
+
+</body>
+</html>

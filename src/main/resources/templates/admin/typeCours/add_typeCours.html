@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="/admin/admin_layout">
+      
+<head>
+<meta charset="UTF-8">
+<title>Ajouter Cycle</title>
+<head>
+<body>
+<div layout:fragment="content">  
+  <div class="content container-fluid">
+
+			<div class="page-header">
+				<div class="row align-items-center">
+					<div class="col">
+						<h3 class="page-title">Admin</h3>
+						<ul class="breadcrumb">
+							<li class="breadcrumb-item active">Add Type Cours</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-6">
+					<div class="card">
+						<div class="card-body">
+							<form th:action="@{/admin/typeCours/save}" method="post">
+								<div class="row">
+									<div class="col-12">
+										<h5 class="form-title">
+											<span>TypeCours</span>
+										</h5>
+									</div>
+									<div class="col-12 col-sm-12">
+										<div class="form-group">
+											<input type="hidden"  name ="id" th:value="${typeCours.id}" class="form-control" id="libelle" placeholder="id" required autofocus="autofocus"/>
+										</div>
+									</div>
+									<div class="col-12 col-sm-12">
+										<div class="form-group">
+											<label>Designation</label> 
+											<input type="text" name ="libelle" th:value="${typeCours.libelle}" class="form-control" id="libelle" placeholder="cycle" required autofocus="autofocus"/>
+										</div>
+									</div>
+									
+									<div class="col-12">
+										<button type="submit" class="btn btn-primary">Enregistrer</button>
+									</div>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+</div> 
+
+</body>
+</html>

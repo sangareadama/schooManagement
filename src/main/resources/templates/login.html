@@ -1,0 +1,66 @@
+ <!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:insert="fragments.html :: headerfiles">
+</head>
+<body >
+	<header >
+	
+	</header>
+	 <div class="container">
+	<div class="row">
+		<div class="col-md-6 col-md-offset-3">
+			<div th:if="${param.succes}">
+				<div class="alert alert-info">enregistrer avec succes !</div>
+			</div>
+			<h3>connecter Vous</h3>
+			 <form  th:action="@{/login}"  method="post">
+			     <!--  message d'erreur -->
+			     <div th:if="${param.error}">
+					<div class="alert alert-danger">mode de pass ou email invalide !</div>
+			     </div>
+			     
+			     <!-- logout  message --> 
+			     
+			     <div th:if="${param.logout}">
+					<div class="alert alert-info">Vous etes deconnecté !</div>
+			     </div>
+			     
+				<div class="form-group"  >
+     				<label class="control-label" for="username">
+     					Username
+     				</label>
+     				<input type="text" name="username" class="form-control" id="username" placeholder="Entrez votre mail " required autofocus="autofocus"/>
+ 				</div>
+ 				<div class="form-group"  >
+     				<label class="control-label" for="password">
+     					Mot de pass
+     				</label>
+     				<input type="password" name="password" class="form-control" id="prenom" placeholder="votre mot de pass" required autofocus="autofocus"/>
+ 				</div>
+ 				 				
+ 				 				<br>
+ 				 				<br>
+ 				<div class="form-group"  >
+ 					<div class="row">
+		           		<div class="col-md-6 col-md-offset-3">
+		           		<input type="submit" name="login-submit" id="login-submit" class="form-control btn btn-primary" value="log in" >
+		           			
+		           		</div>
+		           	</div>
+ 				</div>
+			 
+			</form> 
+			<div class="form-group"  >
+ 				<span> vous etes nouveau ? <a href="/" th:href="@{/admin/utilisateur}"> inscription ici</a> </span>
+ 				</div>
+ 
+		</div>
+		
+	</div>
+
+</div> 
+
+
+
+</body>
+</html>

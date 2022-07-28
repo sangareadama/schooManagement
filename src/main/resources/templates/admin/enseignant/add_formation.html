@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="/admin/admin_layout">
+      
+<head>
+<meta charset="UTF-8">
+<title>Ajouter DES Formation a l'enseignant</title>
+<head>
+<body>
+<div layout:fragment="content">
+<div class="container">
+ <div class="col-md-4 col-md-offset-3">
+	<div class="panel panel-warning">
+	  <div class="panel-heading"> Ajouter Formation a l'enseignant</div>
+		<div class="panel-body">
+			<div th:if="${param.succes}">
+				<div class="alert alert-info">enregistrer avec succes !</div>
+			</div>
+			 <form  th:action="@{/admin/enseignant/save_formation}" method="post" >
+			 
+			    <div class="form-group" >
+     				<label class="control-label" for="id">
+     					id
+     				</label>
+     				<input type="text"  name ="enseignantId" th:value="${enseignant.id}" class="form-control" id="libelle" placeholder="id" required autofocus="autofocus"/>
+ 				</div>
+			   
+ 				<div class="form-group">
+ 				    <label class="control-label" for="classe">
+     					Classe  
+     				</label>
+		      		<select  class="form-control"  name="classeId">    
+		      			<option th:each="c:${classes}"  th:value="${c.id}" th:text="${c.niveau.libelle}"/>
+		      		</select>
+		      	</div>
+		      	
+		      	<div class="form-group">
+ 				    <label class="control-label" for="classe">
+     					Cours  
+     				</label>
+		      		<select  class="form-control"  name="coursId">    
+		      			<option th:each="c:${cours}"  th:value="${c.id}" th:text="${c.libelle}"/>
+		      		</select>
+		      	</div>
+		      	  
+ 				 				
+ 				<div >
+ 					<button type="submit" class="btn btn-primary">Valider</button>
+     			</div>
+			 
+			</form> 
+ 
+		</div>
+	  </div>
+	</div>
+  </div>
+</div> 
+
+</body>
+</html>

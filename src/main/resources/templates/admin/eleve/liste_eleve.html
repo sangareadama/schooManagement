@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="/admin/admin_layout">
+<head >
+<meta charset="ISO-8859-1">
+<title>Liste Eleve</title>
+ 
+</head>
+<body >
+
+	<div layout:fragment="content">
+	  <div class="content container-fluid">
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">Open modal for @mdo</button>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">New message</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="mb-3">
+            <label for="recipient-name" class="col-form-label">Recipient:</label>
+            <input type="text" class="form-control" id="recipient-name">
+          </div>
+          <div class="mb-3">
+            <label for="message-text" class="col-form-label">Message:</label>
+            <textarea class="form-control" id="message-text"></textarea>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Send message</button>
+      </div>
+    </div>
+  </div>
+</div>
+		<!-- <div class="panel panel-info">
+			<div class="panel-heading">Liste des Eleve</div>
+			<div class="panel-body">
+
+				<form  style="margin-bottom: 70px" th:action="@{/admin/eleve/add}" method="get">
+					<div>
+						<button type="submit" class="btn btn-primary">Ajouter</button>
+					</div>
+				</form>
+				<div class="row">
+					<div class="col-md-8">
+						 <table class="table table-responsive table-bordered .table-striped">
+							<thead>
+								<tr>
+									<th>ID</th>
+									<th>Nom</th>
+									<th>Prenom</th>
+									<th>Matricule</th>
+									<th>Date de naiss</th>
+									<th>Action</th>
+								</tr>
+							</thead>
+							<tbody>
+							
+								<tr th:each="el:${eleves}">
+									<td th:text="${el.id}"></td>
+									<td th:text="${el.nom}"></td>
+									<td th:text="${el.prenom}"></td>
+									<td th:text="${el.matricule}"></td>
+									<td th:text="${el.dateNaissance}"></td>
+									<td > 
+		 					         	<a  href="#" class="btn btn-primary btn-xs purple editView" title="Edit" th:href="@{/admin/eleve/edit(id=${el.id})}"><i class="fa fa-edit"></i>Edit</a>
+		 								<a onclick="return confirm('vous etes sur de supprimer ? ')" href="#" class="btn btn-danger btn-xs purple deleteView" title="Delete " th:href="@{/admin/eleve/delete(id=${el.id})}"><i class="fa fa-trash"></i>Delete</a>
+		 							</td>
+									
+								</tr> 
+							</tbody>
+
+						</table> 
+						
+					</div>
+				</div>
+			</div>
+		</div> -->
+		
+		
+		
+	
+		<div class="page-header">
+			<div class="row align-items-center">
+				<div class="col">
+					<h3 class="page-title">Students</h3>
+					
+				</div>
+				<div class="col-auto text-end float-end ms-auto">
+				    <a href="/admin/eleve/add"
+						class="btn btn-primary"><i class="fas fa-plus"></i></a>
+					<a href="#" class="btn btn-outline-primary me-2"><i
+						class="fas fa-download"></i> Download</a> 
+					
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-12">
+				<div class="card card-table">
+					<div class="card-body">
+						<div class="table-responsive">
+						  <form th:action="@{/admin/typeNote/prof}" method="post">
+							<table class="table table-hover table-center ">
+								<thead>
+								  <tr>
+									<th>PHOTO</th>
+									<th>Nom</th>
+									<th>Prenom</th>
+									<th>Matricule</th>
+									<th>Date de naiss</th>
+									<th>Classes</th>
+									<th>Action</th>
+								  </tr>
+								</thead>
+								
+								<tbody>
+								   
+									<tr th:each="eleve:${eleves}">
+									 <td> <img alt=""th:src="*{'data:photo/jpeg;base64,'+{eleve.photo}}"
+						                    style="width: 40px; height: 40px;"  class="rounded-circle">
+									</td> 
+									
+									<td th:text="${eleve.nom}"></td>
+									<td th:text="${eleve.prenom}"></td>
+									<td th:text="${eleve.matricule}"></td>
+									<td th:text="${eleve.dateDeNaissance}"></td>
+									<td th:text="${eleve.classes}"></td>
+									<td th:text="${eleve.email}"></td>
+									<td >
+										<input type="hidden"  name =""  class="form-control" id="id" placeholder="id" required autofocus="autofocus"/>
+							
+									</td>
+									  
+									<td> 
+		 					         	<a  href="#" class="btn btn-info btn-xs purple editView" title="Edit" th:href="@{/admin/eleve/edit(id=${eleve.id})}"><i class="fa fa-edit"></i></a>
+		 								<a onclick="return confirm('vous etes sur de supprimer ? ')" href="#" class="btn btn-danger btn-xs purple deleteView" title="Delete " th:href="@{/admin/eleve/delete(id=${eleve.id})}"><i class="fa fa-trash"></i></a>
+		 								<a onclick="return confirm('vous ajouter l eleve dans une autre classse ? ')" href="#" class="btn btn-warning btn-xs purple deleteView" title="add to class " th:href="@{/admin/eleve/addToClass(id=${eleve.id})}"><i ></i>ajouter ds classe</a>
+		 								
+									</td>										 
+								</tr> 
+							   	
+								</tbody>
+								
+							</table>
+							
+							
+						  </form>	
+						</div>
+					</div>
+				</div>
+			</div>
+		  </div>
+		</div>	
+  </div>
+</body>
+</html>				
