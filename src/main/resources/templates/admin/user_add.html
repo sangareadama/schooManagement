@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="/admin/admin_layout">
+<head>
+ <meta charset="UTF-8">
+<title>Ajouter Utilisateur</title>
+</head>
+<body>
+<div layout:fragment="content">
+	
+    <section class="content">
+      <div class="container-fluid">
+          <div class="col-md-6 col-md-offset-3">
+			<div class="panel panel-primary">
+			  <div class="panel-heading"> Ajouter Produit</div>
+				<div class="panel-body">
+					 
+					 <form  th:action="@{/admin/user/save}"  method="post"  enctype="multipart/form-data">
+						<div class="form-group">
+		     				<label class="control-label" for="nom"> 
+		     					nom
+		     				</label> 
+		     				<input type="text" class="form-control" name="nom"   id="nom" placeholder="nom" required autofocus="autofocus"/>
+		 				</div>
+		 				<div class="form-group"  >
+		     				<label class="control-label" for="prenom">
+		     					prenom
+		     				</label>
+		     				<input type="text"  class="form-control" name="prenom"   placeholder="prenom" required autofocus="autofocus"/>
+		 				</div>
+		 				<div class="form-group"  >
+		     				<label class="control-label" for="email">
+		     					emaillllll
+		     				</label>
+		     				<input type="text"  class="form-control" name="email"  id="email" placeholder="email" required autofocus="autofocus"/>
+		 				</div>
+		 				<div class="form-group"  >
+		     				<label class="control-label" for="password">
+		     					password
+		     				</label>
+		     				<input type="text" class="form-control" name="password"  id="password" placeholder="password" required autofocus="autofocus"/>
+		 				</div>
+		 				<div class="custom-file mb-2">
+							<input type="file" name="file" class="custom-file-input"
+								id="customFile"> <label class="custom-file-label"
+								for="customFile">Image</label>
+			             </div>
+
+		 				<div class="form-group"  >
+		 					<button type="submit" class="btn btn-success">Enregistrer</button>
+		     			</div>
+			 
+			        </form> 	
+		 
+				</div>
+			 </div>
+			</div>
+
+         </div> 
+      
+ 	  </section> 
+ 	  
+ 	  
+ </div>
+</body>
+</html>

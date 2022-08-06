@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="/admin/admin_layout">
+      
+<head>
+<meta charset="UTF-8">
+<title>Edit Eleve</title>
+<head>
+<body>
+<div layout:fragment="content">
+<!-- <div class="container">
+ <div class="col-md-4 col-md-offset-3">
+	<div class="panel panel-warning">
+	  <div class="panel-heading">Edit Eleve</div>
+		<div class="panel-body">
+			<div th:if="${param.succes}">
+				<div class="alert alert-info">enregistrer avec succes !</div>
+			</div>
+			 <form  th:action="@{/admin/eleve/update}" method="post" >
+			   <div class="form-group" > 
+     				<label class="control-label" for="id">
+     					id
+     				</label>
+     				<input type="text"  name ="id" th:value="${eleve.id}" class="form-control" id="libelle" placeholder="id" required autofocus="autofocus"/>
+ 				</div> 				
+ 				<div class="form-group"  >
+     				<label class="control-label" for="nom">
+     					Nom
+     				</label>
+     				<input type="text"  name ="nom" th:value="${eleve.nom}" class="form-control" id="nom" placeholder="nom" required autofocus="autofocus"/>
+ 				</div> 
+ 				<div class="form-group"  >
+     				<label class="control-label" for="prenom">
+     					Prenom
+     				</label>
+     				<input type="text"  name ="prenom" th:value="${eleve.prenom}" class="form-control" id="prenom" placeholder="prenom" required autofocus="autofocus"/>
+ 				</div> 
+ 				<div class="form-group"  >
+     				<label class="control-label" for="nom">
+     					Matricule
+     				</label>
+     				<input type="text"  name ="matricule" th:value="${eleve.matricule}" class="form-control" id="matricule" placeholder="matricule" required autofocus="autofocus"/>
+ 				</div>
+ 				
+		      	<div >
+		      		<table>
+		      	       <tr>
+			
+			             <td>
+			               <th:block th:each="c:${classes}" >
+			                <input type="checkbox" name="classeListe"  th:value="${c.id}"/>
+			                 <label th:text="${c.niveau.libelle}"></label>
+			               </th:block>
+			             </td>
+                       </tr>
+                    </table>   
+      			</div>
+ 				<div class="form-group"  >
+     				<label class="control-label" for="nom">
+     					Date de naissance
+     				</label>
+     				<input type="date"  name ="dateNaissance" th:value="${eleve.dateNaissance}" class="form-control" id="dateNaissance" placeholder="dateNaissance" required autofocus="autofocus"/>
+ 				</div> 					
+ 				<div >
+ 					<button type="submit" class="btn btn-primary">Valider</button>
+     			</div>
+			 
+			</form> 
+ 
+		</div>
+	  </div>
+	</div>
+  </div> -->
+  <div class="content container-fluid">
+
+			<div class="page-header">
+				<div class="row align-items-center">
+					<div class="col">
+						<h3 class="page-title">Admin</h3>
+						<ul class="breadcrumb">
+							<li class="breadcrumb-item active">Update Eleve</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-sm-12">
+					<div class="card">
+						<div class="card-body">
+							<form th:action="@{/admin/eleve/update}" method="post" enctype="multipart/form-data">
+								<div class="row">
+									<div class="col-12"> 
+										<h5 class="form-title">
+											<span> Information Eleve</span>
+										</h5>
+									</div>
+									<input type="hidden"  name ="id" th:value="${eleve.id}" class="form-control" id="id" placeholder="id" required autofocus="autofocus"/>
+									
+									<div class="col-xl-4 col-lg-6 col-12 form-group">
+                                    	<label>Nom *</label>
+                                    	<input type="text"  name ="nom"  class="form-control" th:value="${eleve.nom}" id="nom" placeholder="nom" required autofocus="autofocus"/>
+                                   </div>
+                                   <div class="col-xl-4 col-lg-6 col-12 form-group">
+                                    	<label>Prenom *</label>
+                                    	<input type="text"  name ="prenom"  class="form-control" th:value="${eleve.prenom}" id="prenom" placeholder="prenom" required autofocus="autofocus"/>
+                                   </div>
+                                   <div class="col-xl-4 col-lg-6 col-12 form-group">
+                                    	<label>Matricule</label>
+                                    	<input type="text"  name ="matricule"  class="form-control" th:value="${eleve.matricule}" id="matricule" placeholder="matricule" required autofocus="autofocus"/>
+                                   </div>
+                                   <div class="col-xl-4 col-lg-6 col-12 form-group">
+                                    	<label>Sexe *</label> 
+                                    		 <div th:each="gr : ${genre}">
+                                               <div class="custom-control custom-radio custom-control-inline">
+                                                  <input type="radio" name="sexe" th:value="${gr.libelle}" class="custom-control-input">
+                                                  <label class="custom-control-label"  th:value="${gr.id}" th:text="${gr.libelle}"></label>
+                                               </div>
+                                             </div> 
+                                             								 
+                                    </div>
+                                   <div class="col-xl-4 col-lg-6 col-12 form-group">
+                                    	<label>Email *</label>
+                                    	<input type="text"  name ="email"  class="form-control" th:value="${eleve.email}" id="email" placeholder="email" required autofocus="autofocus"/>
+                                   </div>
+                                    <div class="col-xl-4 col-lg-6 col-12 form-group">
+                                    	<label>Telephone</label>
+                                    	<input type="text"  name ="telephone"  class="form-control" th:value="${eleve.telephone}" id="telephone" placeholder="telephone" required autofocus="autofocus"/>
+                                   </div>
+                                     <div class="col-xl-4 col-lg-6 col-12 form-group">
+                                    	<label>Adresse</label>
+                                    	<input type="text"  name ="address"  class="form-control"  th:value="${eleve.address}"   id="address" placeholder="address" required autofocus="autofocus"/>
+                                   </div>
+                                    <div class="col-xl-4 col-lg-6 col-12 form-group">
+                                    	<label>Date de Naiss </label>
+                                    	<input type="date"  name ="dateDeNaissance"  class="form-control" th:value="${eleve.dateDeNaissance}" id="dateDeNaissance" placeholder="dateDeNaissance" required autofocus="autofocus"/>
+                                   </div> 
+                                    <div class="col-xl-4 col-lg-6 col-12 form-group">
+                                    	<label>Nationalité</label>
+                                    	<input type="text"  name ="nationalite"  class="form-control"th:value="${eleve.nationalite}" id="nationalite" placeholder="email" required autofocus="autofocus"/>
+                                   </div>
+                                                 
+                               		<div class="col-xl-4 col-lg-6 col-12 form-group">
+							              <input type="file" name="file" class="custom-file-input"
+								           id="customFile">
+			                          </div> 
+			                          
+			                          <div class="col-xl-4 col-lg-6 col-12 form-group">
+										<div class="form-group">
+											<label> Classe </label>  
+											<select
+												class="form-control" name="classeId">
+												<option th:each="classe:${classes}" th:value="${classe.id}" th:text="${classe.niveau.libelle}" />
+											</select>
+										</div>
+									 </div>
+									
+									<div class="col-12">
+										<button type="submit" class="btn btn-primary">Submit</button>
+									</div>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+</div> 
+
+</body>
+</html>

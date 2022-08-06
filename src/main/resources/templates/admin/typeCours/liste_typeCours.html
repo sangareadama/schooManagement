@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="/admin/admin_layout">
+<head >
+<meta charset="ISO-8859-1">
+<title>Types de Cours</title>
+ 
+</head>
+<body >
+	<div layout:fragment="content">
+	  <div class="col-sm-6" >
+		<div class="page-header">
+			<div class="row align-items-center">
+				<div class="col">
+					<h3 class="page-title">Types de Cours</h3>
+					
+				</div>
+				<div class="col-auto text-end float-end ms-auto">
+				    <a href="/admin/typeCours/add" class="btn btn-primary" 
+							data-bs-toggle="modal" data-bs-target="#exampleModal"
+							data-bs-whatever="@mdo"><i class="fas fa-plus"></i></a>
+					<a href="#" class="btn btn-outline-primary me-2"><i
+						class="fas fa-download"></i> Download</a> 			
+				</div>
+				
+				
+							<div class="modal fade" id="exampleModal" tabindex="-1"
+							aria-labelledby="exampleModalLabel" aria-hidden="true">
+							<div class="modal-dialog">
+								<div class="modal-content">
+									<div class="modal-header">
+										<h5 class="modal-title" id="exampleModalLabel">New
+											message</h5>
+										<button type="button" class="btn-close"
+											data-bs-dismiss="modal" aria-label="Close"></button>
+									</div>
+									<div class="modal-body">
+										<form th:action="@{/admin/typeCours/save}" method="post">
+											<div class="row">
+											<div class="col-12">
+												<h5 class="form-title">
+													<span>Cours</span>
+												</h5>
+											</div>
+											<div class="col-12 col-sm-12">
+												<div class="form-group">
+													<label>Designation</label> <input type="text"
+														name="libelle" 
+														class="form-control" id="libelle" placeholder="cycle"
+														required autofocus="autofocus" />
+												</div>
+											</div>
+
+											<div class="col-12">
+												<button type="submit" class="btn btn-primary">Enregistrer</button>
+											</div>
+										</div>
+										</form>
+									</div>
+									<div class="modal-footer">
+										<button type="button" class="btn btn-secondary"
+											data-bs-dismiss="modal">Close</button>
+										<button type="button" class="btn btn-primary">Send
+											message</button>
+									</div>
+								</div>
+							</div>
+						</div>
+				
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-12">
+				<div class="card card-table">
+					<div class="card-body">
+						<div class="table-responsive">
+							<table class="table table-hover table-center ">
+								<thead>
+								  <tr>
+									<th>ID</th>
+									<th>libelle</th>
+									<th>Action</th>
+								  </tr>
+								</thead>
+								<tbody>
+								   <tr th:each="c:${typeCours}">
+										<td th:text="${c.id} "></td>
+										<td th:text="${c.libelle} "></td>
+										<td > 
+			 					         	<a href="#" class="btn btn-info btn-xs purple editView" title="Edit"   th:href="@{/admin/typeCours/edit(id=${c.id})}"><i class="fa fa-edit"></i></a>
+			 								<a onclick="return confirm('vous etes sur de supprimer ? ')" href="#" class="btn btn-danger btn-xs purple deleteView" title="Delete " th:href="@{/admin/typeCours/delete(id=${c.id})}"><i class="fa fa-trash"></i></a>
+			 							</td>		 
+								   </tr> 
+								</tbody> 
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	 </div>
+  </div>
+</body>
+</html>

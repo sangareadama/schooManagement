@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="/admin/admin_layout">
+      
+<head>
+<meta charset="UTF-8">
+<title>Ajouter Cycle</title>
+<head>
+<body>
+<div layout:fragment="content">
+
+  
+  <div class="content container-fluid">
+
+			<div class="page-header">
+				<div class="row align-items-center">
+					<div class="col">
+						<h3 class="page-title">Admin</h3>
+						<ul class="breadcrumb">
+							<li class="breadcrumb-item active">Add Cycle</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-sm-6">
+					<div class="card">
+						<div class="card-body">
+							<form th:action="@{/admin/eleve/saveToClass}" method="post">
+								<div class="row">
+									<div class="col-12">
+										<h5 class="form-title">
+											<span>Classe</span>
+										</h5>
+									</div>
+									<div class="col-12 col-sm-12">
+										<div class="form-group">
+											<label>ID ELEVE</label> 
+											<input type="text"  name ="id" th:value="${eleve.id}" class="form-control" id="id" placeholder="id" required autofocus="autofocus"/>
+										</div>
+									</div>
+									<div class="col-12 col-sm-6">
+										<div class="form-group"> 
+											<label> Classe </label> 
+											<select
+												class="form-control" name="classeId">
+												<option th:each="classe:${classes}" th:value="${classe.id}" th:text="${classe.niveau.libelle}" />
+											</select>
+										</div>
+									</div>
+									
+									<div class="col-12">
+										<button type="submit" class="btn btn-primary">Enregistrer</button>
+									</div>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+   </div> 
+
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="/admin/admin_layout">
+<head >
+<meta charset="ISO-8859-1">
+<title>Types de Note</title>
+ 
+</head>
+<body >
+	<div layout:fragment="content">
+	  <div class="col-sm-6" >
+		<div class="page-header">
+			<div class="row align-items-center">
+				<div class="col">
+					<h3 class="page-title">Types de Note</h3>
+				</div>
+				<div class="col-auto text-end float-end ms-auto">
+				    <a href="/admin/typeNote/add" class="btn btn-primary"><i class="fas fa-plus"></i></a>
+					<a href="#" class="btn btn-outline-primary me-2"><i
+						class="fas fa-download"></i> Download</a> 			
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-12">
+				<div class="card card-table">
+					<div class="card-body">
+						<div class="table-responsive">
+							<table class="table table-hover table-center ">
+								<thead>
+								  <tr>
+									<th>ID</th>
+									<th>libelle</th>
+									<th>NoteTotal</th>
+									<th>Action</th>
+								  </tr>
+								</thead>
+								<tbody>
+								   <tr th:each="tn:${typeNote}">
+										<td th:text="${tn.id} "></td>
+										<td th:text="${tn.libelle} "></td>
+										<td th:text="${tn.noteTotal} "></td>
+										<td > 
+			 					         	<a href="#" class="btn btn-info btn-xs purple editView" title="Edit"   th:href="@{/admin/typeNote/edit(id=${tn.id})}"><i class="fa fa-edit"></i></a>
+			 								<a onclick="return confirm('vous etes sur de supprimer ? ')" href="#" class="btn btn-danger btn-xs purple deleteView" title="Delete " th:href="@{/admin/typeNote/delete(id=${tn.id})}"><i class="fa fa-trash"></i></a>
+			 							</td>		 
+								   </tr> 
+								</tbody> 
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	 </div>
+  </div>
+</body>
+</html>
