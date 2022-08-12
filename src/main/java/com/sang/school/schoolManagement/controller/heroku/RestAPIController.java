@@ -1,4 +1,4 @@
-package com.sang.school.schoolManagement.controller;
+package com.sang.school.schoolManagement.controller.heroku;
 
 import java.io.IOException;
 import java.util.List;

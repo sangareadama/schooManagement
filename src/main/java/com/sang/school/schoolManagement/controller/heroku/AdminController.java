@@ -1,4 +1,4 @@
-package com.sang.school.schoolManagement.controller;
+package com.sang.school.schoolManagement.controller.heroku;
 
 import java.util.Arrays;
 import java.util.List;

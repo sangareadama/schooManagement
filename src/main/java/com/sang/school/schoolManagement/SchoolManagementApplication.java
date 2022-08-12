@@ -21,7 +21,7 @@ import com.sang.school.schoolManagement.service.IRoleService;
 import com.sang.school.schoolManagement.service.IUtilisateurService;
 
 @SpringBootApplication
-@ComponentScan(basePackages = {"com.sang.school.schoolManagement.controller"})
+//@ComponentScan(basePackages = {"com.sang.school.schoolManagement.controller"})
 public class SchoolManagementApplication {
 	
 	@Autowired

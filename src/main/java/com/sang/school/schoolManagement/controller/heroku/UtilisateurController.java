@@ -1,4 +1,4 @@
-package com.sang.school.schoolManagement.controller;
+package com.sang.school.schoolManagement.controller.heroku;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
