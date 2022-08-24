@@ -8,7 +8,6 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -21,7 +20,6 @@ import com.sang.school.schoolManagement.service.IRoleService;
 import com.sang.school.schoolManagement.service.IUtilisateurService;
 
 @SpringBootApplication
-//@ComponentScan(basePackages = {"com.sang.school.schoolManagement.controller"})
 public class SchoolManagementApplication {
 	
 	@Autowired
